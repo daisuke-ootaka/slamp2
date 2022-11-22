@@ -9,7 +9,7 @@ This project is based on `ringogirl`'s slamp project.
 
 Chat with big :emoji: in slack.
 
-![image](https://github.com/daisuke-ootaka/slamp2/blob/master/images/serval_chan.jpg)
+![image](https://github.com/daisuke-ootaka/slamp2/blob/main/images/serval_chan.jpg)
 
 ## Install Yourself
 
@@ -75,12 +75,12 @@ type below in slack.
 
 `/stamp :custom_emoji:`
 
-![image](https://github.com/daisuke-ootaka/slamp2/blob/master/images/stamp.gif)
+![image](https://github.com/daisuke-ootaka/slamp2/blob/main/images/stamp.gif)
 
 
 ## So fun!
 
-![image](https://github.com/daisuke-ootaka/slamp2/blob/master/images/kotsume_kawauso.jpg)
+![image](https://github.com/daisuke-ootaka/slamp2/blob/main/images/kotsume_kawauso.jpg)
 
 ## About Icons
 - All Kemono-Frends icon from <a href="https://twitter.com/Kiguchi1902">@Kiguchi1902</a>
