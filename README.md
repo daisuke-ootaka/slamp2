@@ -17,7 +17,11 @@ Chat with big :emoji: in slack.
 
 Deploy app to [Glitch](https://glitch.com/)
 
-Now, environment variables is temporary.
+1. New project
+2. Import from GitHub
+3. Input `https://github.com/daisuke-ootaka/slamp2.git`
+
+Now, environment variables `.env` is temporary.
 
 ### Create Slack Application
 
@@ -38,7 +42,7 @@ In the slack application.
 3. Setup Slack commands.
   - `Command`: /stamp
   - `Request URL`: Your application URL.
-      - e.g.) https://foobar.com/command
+      - e.g.) https://foobar.glitch.me/command
   - `Short Description`: Stamp emoji
   - `Usage Hint`: :emoji:
 4. `Save`.
@@ -53,7 +57,6 @@ Select Permission scopes below for Bot Token Scopes.
 
 - `commands` (default)
 - `emoji:read`
-- `chat:write`
 
 ### Install app
 
@@ -64,10 +67,10 @@ Select `OAuth & Permissions` from Features menu.
 
 ### Setup environment variables
 
-In the Glitch application, input variables from slack application.
+In the Glitch application, input variables `.env` from slack application.
 
-- BOT_USER_OAUTH_TOKEN
-    - `Bot User OAuth Token` value in Slack App
+- Variable Name: `BOT_USER_OAUTH_TOKEN`
+- Variable Value: `Bot User OAuth Token` in Slack App
 
 ## Usage
 
