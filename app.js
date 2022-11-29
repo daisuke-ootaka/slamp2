@@ -32,6 +32,9 @@ app.use(bodyParser.json({ verify: rawBodyBuffer }));
  * Endpoint to receive /stamp slash command from Slack.
  */
 const getEmoji = async (emoji) => {
+  // log
+  console.log("Request Emoji:", emoji);
+
   const list = await botClient.emoji.list();
   const emojis = list.emoji || {};
 
@@ -41,11 +44,18 @@ const getEmoji = async (emoji) => {
 
   return emojis[emoji];
 };
+const getEmojiImage = async (emoji) => {
+  const image = await getEmoji(emoji);
+
+  if (image && image.startsWith("alias:")) {
+    emoji = image.split(":")[1];
+    return getEmojiImage(emoji);
+  }
+
+  return [image, emoji];
+};
 app.post("/command", async (req, res, next) => {
   try {
-    // log
-    console.log("Request Emoji:", req.body.text);
-
     let message = {};
 
     // no args error
@@ -60,15 +70,15 @@ app.post("/command", async (req, res, next) => {
     }
 
     const text = req.body.text;
-    const emoji = text.replace(/:([^:]+):/, "$1");
-    const image = await getEmoji(emoji);
+    const request_emoji = text.replace(/:([^:]+):/, "$1");
+    const [image, target_emoji] = await getEmojiImage(request_emoji);
 
     // no custom emoji error
     if (!image) {
-      console.log(`custom emoji [${req.body.text}] not found.`);
+      console.log(`custom emoji [:${target_emoji}:] not found.`);
       message = {
         response_type: "ephemeral",
-        text: `カスタム絵文字に ${req.body.text} は見つからなかったよ`,
+        text: `カスタム絵文字に :${target_emoji}: は見つからなかったよ`,
       };
       res.json(message);
       return;
